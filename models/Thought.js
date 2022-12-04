@@ -1,5 +1,9 @@
 const { Schema, model, Types } = require(`mongoose`);
 
+const dateCreated = function (createdAt) {
+    return Date(createdAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+};
+
 const reactionSchema = new Schema(
     {
         reactionId: {
@@ -52,9 +56,6 @@ const thoughtSchema = new Schema(
     },
 );
 
-const dateCreated = function (createdAt) {
-    return Date(createdAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
-};
 
 thoughtSchema
     .virtual(`reactionCount`)
